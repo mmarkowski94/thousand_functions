@@ -1,5 +1,11 @@
 from collections import Counter
 
+from scipy.stats import expon
+
+"""
+Math functions
+"""
+
 
 def add(a, b):
 	return a + b
@@ -194,6 +200,24 @@ assert square_area(8) == 64
 assert square_area(11) == 121
 
 
+def cube_volume(side_length):
+	return side_length ** 3
+
+
+assert cube_volume(3) == 27
+assert cube_volume(4) == 64
+assert cube_volume(2) == 8
+
+
+def cube_surface_area(side_length):
+	return 6 * side_length ** 2
+
+
+assert cube_surface_area(3) == 54
+assert cube_surface_area(2) == 24
+assert cube_surface_area(11) == 726
+
+
 def rectangle_perimeter(side_length, side_height):
 	return (side_height + side_length) * 2
 
@@ -228,6 +252,44 @@ def circle_area(r):
 assert circle_area(1) == 3.14
 assert circle_area(2) == 12.56
 assert circle_area(4) == 50.24
+
+
+def triangle_perimeter(a, b, c):
+	return a + b + c
+
+
+assert triangle_perimeter(6, 5, 4) == 15
+assert triangle_perimeter(2, 3, 5) == 10
+assert triangle_perimeter(5, 6, 3) == 14
+
+
+def triangle_area(a, h):
+	return a * h / 2
+
+
+assert triangle_area(10, 4) == 20
+assert triangle_area(2, 4) == 4
+assert triangle_area(12, 6) == 36
+
+
+def is_correct_triangle(a, b, c):
+	return a + b > c and a + c > b and b + c > a
+
+
+assert is_correct_triangle(3, 4, 5) == True
+assert is_correct_triangle(4, 6, 6) == True
+assert is_correct_triangle(12, 6, 40) == False
+
+"""
+Physics functions
+"""
+
+# todo:add funcions
+
+
+"""
+String functions
+"""
 
 
 def upper_first_letter(name):
@@ -288,9 +350,27 @@ assert is_palindrome("kajak") == True
 assert is_palindrome("pies") == False
 assert is_palindrome("Anna") == True
 
+
+def get_str_from_list(str_):
+	return " ".join(str_)
+
+
+assert get_str_from_list(["Ania", "ma", "kajak"]) == "Ania ma kajak"
+assert get_str_from_list(["pies", "i", "kot"]) == "pies i kot"
+assert get_str_from_list(["To", "jest", "zdanie"]) == "To jest zdanie"
+
 """
-https://www.codewars.com/kata/559d2284b5bb6799e9000047/train/python
+List functions
 """
+
+# todo:add funcions
+
+"""
+Codewars functions
+"""
+
+
+# https://www.codewars.com/kata/559d2284b5bb6799e9000047/train/python
 
 
 def add_length(str_):
@@ -301,9 +381,8 @@ assert add_length("Hello World") == ["Hello 5", "World 5"]
 assert add_length("apple ban") == ["apple 5", "ban 3"]
 assert add_length("you will win") == ["you 3", "will 4", "win 3"]
 
-"""
-https://www.codewars.com/kata/54147087d5c2ebe4f1000805/train/python
-"""
+
+# https://www.codewars.com/kata/54147087d5c2ebe4f1000805/train/python
 
 
 def _if(bool_, func1, func2):
@@ -316,9 +395,8 @@ def _if(bool_, func1, func2):
 assert _if(True, lambda: True, lambda: False) == True
 assert _if(False, lambda: True, lambda: False) == False
 
-"""
-https://www.codewars.com/kata/57f222ce69e09c3630000212/train/python
-"""
+
+# https://www.codewars.com/kata/57f222ce69e09c3630000212/train/python
 
 
 def well(x):
@@ -334,9 +412,8 @@ assert well(['bad', 'bad', 'bad']) == "Fail!"
 assert well(['good', 'bad', 'bad', 'bad', 'bad']) == "Publish!"
 assert well(['good', 'bad', 'bad', 'bad', 'bad', 'good', 'bad', 'bad', 'good']) == "I smell a series!"
 
-"""
-https://www.codewars.com/kata/5a6663e9fd56cb5ab800008b/train/python
-"""
+
+# https://www.codewars.com/kata/5a6663e9fd56cb5ab800008b/train/python
 
 
 def human_years_cat_years_dog_years(human_years):
@@ -353,9 +430,8 @@ assert human_years_cat_years_dog_years(1) == [1, 15, 15]
 assert human_years_cat_years_dog_years(2) == [2, 24, 24]
 assert human_years_cat_years_dog_years(5) == [5, 36, 39]
 
-"""
-https://www.codewars.com/kata/563b74ddd19a3ad462000054/train/python
-"""
+
+# https://www.codewars.com/kata/563b74ddd19a3ad462000054/train/python
 
 
 def stringy(size):
@@ -366,9 +442,8 @@ assert stringy(6) == "101010"
 assert stringy(4) == "1010"
 assert stringy(12) == "101010101010"
 
-"""
-https://www.codewars.com/kata/5d5ee4c35162d9001af7d699/train/python
-"""
+
+# https://www.codewars.com/kata/5d5ee4c35162d9001af7d699/train/python
 
 
 def sum_of_minimums(numbers):
@@ -379,9 +454,8 @@ assert sum_of_minimums([[1, 2, 3, 4, 5], [5, 6, 7, 8, 9], [20, 21, 34, 56, 100]]
 assert sum_of_minimums([[5, 8, 13, 4, 5], [5, 6, 7, 2, 9], [20, 4, 34, 56, 2]]) == 8
 assert sum_of_minimums([[7, 2, 3, 4, 5], [23, 6, 4, 8, 9], [27, 21, 34, 56, 100]]) == 27
 
-"""
-https://www.codewars.com/kata/585d7d5adb20cf33cb000235/train/python
-"""
+
+# https://www.codewars.com/kata/585d7d5adb20cf33cb000235/train/python
 
 
 def find_uniq(arr):
@@ -392,11 +466,12 @@ def find_uniq(arr):
 			return value
 
 
-##todo:assercje
+assert find_uniq(["a", "b", "b"]) == "a"
+assert find_uniq(["a", "b", "b", "a", "c"]) == "c"
+assert find_uniq(["a", "b", "a", "c", "c"]) == "b"
 
-"""
-https://www.codewars.com/kata/596c6eb85b0f515834000049/train/python
-"""
+
+# https://www.codewars.com/kata/596c6eb85b0f515834000049/train/python
 
 
 def replace_dots(s):
@@ -407,9 +482,8 @@ assert replace_dots("Ala.ma.kota") == "Ala-ma-kota"
 assert replace_dots("...") == "---"
 assert replace_dots("Kot.ma.Ale") == "Kot-ma-Ale"
 
-"""
-https://www.codewars.com/kata/596c6eb85b0f515834000049/train/python
-"""
+
+# https://www.codewars.com/kata/596c6eb85b0f515834000049/train/python
 
 
 def digits(n):
@@ -420,20 +494,20 @@ assert digits(1222) == 4
 assert digits(12) == 2
 assert digits(777666) == 6
 
-"""
-https://www.codewars.com/kata/565f5825379664a26b00007c/train/python
-"""
+
+# https://www.codewars.com/kata/565f5825379664a26b00007c/train/python
 
 
 def get_size(w, h, d):
 	return [2 * (w * h + w * d + h * d), w * h * d]
 
 
-##todo:assercje
+assert get_size(2, 2, 4) == [40, 16]
+assert get_size(4, 5, 2) == [76, 40]
+assert get_size(3, 5, 6) == [126, 90]
 
-"""
-https://www.codewars.com/kata/59dd3ccdded72fc78b000b25/train/python
-"""
+
+# https://www.codewars.com/kata/59dd3ccdded72fc78b000b25/train/python
 
 
 def whatday(num):
@@ -447,16 +521,17 @@ assert whatday(4) == "Wednesday"
 assert whatday(1) == "Sunday"
 assert whatday(23) == "Wrong, please enter a number between 1 and 7"
 
-"""
-https://www.codewars.com/kata/59dd3ccdded72fc78b000b25/train/python
-"""
+
+# https://www.codewars.com/kata/59dd3ccdded72fc78b000b25/train/python
 
 
 def reverse_words(st):
 	return " ".join(st.split()[::-1])
 
 
-##todo:assercje
+assert reverse_words("Hello World") == "World Hello"
+assert reverse_words("Ala ma Kota") == "Kota ma Ala"
+assert reverse_words("Test revers") == "revers Test"
 
 
 def gen_id():
@@ -471,9 +546,14 @@ def gen_id():
 	return gen_next_id
 
 
-"""
-https://www.codewars.com/kata/580a094553bd9ec5d800007d
-"""
+id_generator = gen_id()
+
+assert id_generator() == 0
+assert id_generator() == 1
+assert id_generator() == 2
+
+
+# https://www.codewars.com/kata/580a094553bd9ec5d800007d
 
 
 def apple(x):
@@ -481,14 +561,24 @@ def apple(x):
 		x) ** 2 > 1000 else "Help yourself to a honeycomb Yorkie for the glovebox."
 
 
-##todo assercje
+apple_true_result = "It's hotter than the sun!!"
+apple_false_result = "Help yourself to a honeycomb Yorkie for the glovebox."
+
+assert apple("2") == apple_false_result
+assert apple(2) == apple_false_result
+assert apple(40) == apple_true_result
+
 
 def generate_hashtag(s):
 	result = "".join(word.capitalize() for word in s.split())
 	return "#" + result if result != "" and len(result) < 140 else False
 
 
-##todo assercje
+assert generate_hashtag("") == False
+assert generate_hashtag(
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et "
+	"dolore magna aliqua. Ut enim ad minim veniam wiec hashtah bedzie za dlugi") == False
+assert generate_hashtag("Hello World and Python") == "#HelloWorldAndPython"
 
 
 # https://www.codewars.com/kata/5388f0e00b24c5635e000fc6/train/python
@@ -497,4 +587,217 @@ def swap_values(args):
 	first_value = args[0]
 	args[0] = args[1]
 	args[1] = first_value
-# return args
+
+
+swap_values_test_list = ["a", "b"]
+
+assert swap_values_test_list[0] == "a"
+assert swap_values_test_list[1] == "b"
+swap_values(swap_values_test_list)
+assert swap_values_test_list[0] == "b"
+assert swap_values_test_list[1] == "a"
+
+
+# https://www.codewars.com/kata/534d0a229345375d520006a0/train/python
+
+def power_of_two(x):
+	exponent = 0
+	while 2 ** exponent <= x:
+		if 2 ** exponent == x:
+			return True
+		exponent += 1
+	return False
+
+
+assert power_of_two(0) == False
+assert power_of_two(1) == True
+assert power_of_two(4096) == True
+
+
+# https://www.codewars.com/kata/5625618b1fe21ab49f00001f/train/python
+
+def say_hello(name):
+	return f"Hello, {name}"
+
+
+assert say_hello("Anna") == "Hello, Anna"
+assert say_hello("Adam") == "Hello, Adam"
+assert say_hello("Michał") == "Hello, Michał"
+
+
+# https://www.codewars.com/kata/539ee3b6757843632d00026b/train/python
+
+def capitals(word):
+	return [index for index, letter in enumerate(word) if letter.isupper()]
+
+
+assert capitals("CodEWaRs") == [0, 3, 4, 6]
+assert capitals("AMC") == [0, 1, 2]
+assert capitals("Michał M") == [0, 7]
+
+
+# https://www.codewars.com/kata/58cb43f4256836ed95000f97/train/python
+
+def find_difference(a, b):
+	(a1, b1, c1) = a
+	(a2, b2, c2) = b
+	return abs((a1 * b1 * c1) - (a2 * b2 * c2))
+
+
+assert find_difference([3, 2, 5], [1, 4, 4]) == 14
+assert find_difference([4, 2, 10], [1, 4, 4]) == 64
+assert find_difference([2, 2, 5], [1, 2, 5]) == 10
+
+
+# https://www.codewars.com/kata/545afd0761aa4c3055001386/train/python
+
+def take(arr, n):
+	return arr[:n]
+
+
+assert take([3, 2, 5, 6, 7, 3, 1, 2], 3) == [3, 2, 5]
+assert take([4, 2, 10], 2) == [4, 2]
+assert take([2, 2, 5], 1) == [2]
+
+
+# https://www.codewars.com/kata/53cf459503f9bbb774000003
+
+class Python_class_cw:
+	def __init__(self, name):
+		self.name = name
+
+
+named_python = Python_class_cw("Pajtonik")
+assert named_python.name == "Pajtonik"
+
+
+# https://www.codewars.com/kata/563a631f7cbbc236cf0000c2/train/python
+
+def move(position, roll):
+	return position + roll * 2
+
+
+assert move(3, 6) == 15
+assert move(0, 4) == 8
+assert move(1, 5) == 11
+
+
+# https://www.codewars.com/kata/57cfdf34902f6ba3d300001e/train/python
+
+def two_sort(array):
+	array.sort()
+	return "***".join([letter for letter in array[0]])
+
+
+assert two_sort(
+	["bitcoin", "take", "over", "the", "world", "maybe", "who", "knows", "perhaps"]) == "b***i***t***c***o***i***n"
+assert two_sort(["turns", "out", "random", "test", "cases", "are", "easier", "than", "writing", "out", "basic",
+				 "ones"]) == 'a***r***e'
+assert two_sort(["lets", "talk", "about", "javascript", "the", "best", "language"]) == 'a***b***o***u***t'
+
+
+# https://www.codewars.com/kata/582cb0224e56e068d800003c/train/python
+
+def litres(time):
+	return time // 2
+
+
+assert litres(2) == 1
+assert litres(1.4) == 0
+assert litres(11.8) == 5
+
+
+# https://www.codewars.com/kata/5583090cbe83f4fd8c000051
+def digitize(n):
+	return ([int(digit) for digit in str(n)])[::-1]
+
+
+assert digitize(35231) == [1, 3, 2, 5, 3]
+assert digitize(0) == [0]
+assert digitize(23582357) == [7, 5, 3, 2, 8, 5, 3, 2]
+
+
+# https://www.codewars.com/kata/545991b4cbae2a5fda000158/train/python
+
+def include(arr, item):
+	return item in arr
+
+
+assert include(["a", "b", "c"], "a") == True
+assert include(["a", "b", "c"], "b") == True
+assert include(["a", "b", "c"], "d") == False
+
+
+def string_clean(s):
+	return "".join([letter for letter in s if letter not in "0123456789"])
+
+
+assert string_clean("Te11st23") == "Test"
+assert string_clean("123next34Test") == "nextTest"
+assert string_clean("clear324Stri412ng") == "clearString"
+
+
+# https://www.codewars.com/kata/5933a1f8552bc2750a0000ed/train/python
+
+def nth_even(n):
+	return (n - 1) * 2
+
+
+assert nth_even(1) == 0
+assert nth_even(2) == 2
+assert nth_even(3) == 4
+
+
+# https://www.codewars.com/kata/5963c18ecb97be020b0000a2/train/python
+
+def derive(coefficient, exponent):
+	return f"{coefficient * exponent}x^{exponent - 1 if exponent != 2 else exponent}"
+
+
+assert derive(7, 8) == "56x^7"
+assert derive(5, 9) == "45x^8"
+assert derive(5, 2) == "10x^2"
+
+
+# https://www.codewars.com/kata/56f695399400f5d9ef000af5/train/python
+
+def correct_tail(body, tail):
+	return body[-1] == tail
+
+
+assert correct_tail("Fox", "x") == True
+assert correct_tail("Rhino", "o") == True
+assert correct_tail("Meerkat", "t") == True
+
+
+# https://www.codewars.com/kata/570597e258b58f6edc00230d/train/python
+
+def array(string):
+	return " ".join(string.split(','))[1:-1].strip() if len(string.split(",")) > 2 else None
+
+
+assert array('1,2,3') == '2'
+assert array('1,2') is None
+assert array('1,2,3,4,5') == '2 3 4'  # fix that
+
+
+# https://www.codewars.com/kata/57241e0f440cd279b5000829/train/python
+
+# def sum_mul(n, m): todo: fix that
+# 	if n >= m:
+# 		return "INVALID"
+#
+# 	result = 0
+# 	count  = 1
+#
+# 	while n * count <= m:
+# 		result += n * count
+# 		count += 1
+# 	return result
+#
+#
+#
+# assert sum_mul(0, 0) == 'INVALID'
+# assert sum_mul(2, 9) == 20
+# assert sum_mul(4, -7) == 'INVALID'
+# assert sum_mul(4, 123) == 1860
