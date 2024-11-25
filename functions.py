@@ -1,7 +1,5 @@
 from collections import Counter
 
-from scipy.stats import expon
-
 """
 Math functions
 """
@@ -50,6 +48,10 @@ def divide(a, b):
 assert divide(6, 3) == 2
 assert divide(14, 7) == 2
 assert divide(6, 6) == 1
+
+
+def mod(a, b):
+	return a % b
 
 
 def avg(numbers):
@@ -363,7 +365,36 @@ assert get_str_from_list(["To", "jest", "zdanie"]) == "To jest zdanie"
 List functions
 """
 
-# todo:add funcions
+
+def reverse_list(lst):
+	return lst[::-1]
+
+
+assert reverse_list([1, 2, 3]) == [3, 2, 1]
+assert reverse_list([1, 2, 3, 4]) == [4, 3, 2, 1]
+assert reverse_list([1, 2, 3, 4, 5]) == [5, 4, 3, 2, 1]
+
+
+def is_in_list(item, lst):
+	return item in lst
+
+
+assert is_in_list(2, [1, 2, 3]) == True
+assert is_in_list(5, [1, 2, 3, 4]) == False
+assert is_in_list(5, [1, 2, 3, 4, 5]) == True
+
+"""
+Other functions
+"""
+
+
+def html_p(text):
+	return f"<p>{text}</p>"
+
+
+assert html_p("kajak") == "<p>kajak</p>"
+assert html_p("pies") == "<p>pies</p>"
+assert html_p("kot") == "<p>kot</p>"
 
 """
 Codewars functions
@@ -778,7 +809,7 @@ def array(string):
 
 assert array('1,2,3') == '2'
 assert array('1,2') is None
-assert array('1,2,3,4,5') == '2 3 4'  # fix that
+assert array('1,2,3,4,5') == '2 3 4'
 
 
 # https://www.codewars.com/kata/57241e0f440cd279b5000829/train/python
@@ -801,3 +832,127 @@ assert array('1,2,3,4,5') == '2 3 4'  # fix that
 # assert sum_mul(2, 9) == 20
 # assert sum_mul(4, -7) == 'INVALID'
 # assert sum_mul(4, 123) == 1860
+
+
+# https://www.codewars.com/kata/57a049e253ba33ac5e000212/train/python
+
+def factorial(n):
+	if n in (0, 1):
+		return 1
+	return n * factorial(n - 1)
+
+
+assert factorial(2) == 2
+assert factorial(3) == 6
+assert factorial(4) == 24
+
+
+# https://www.codewars.com/kata/56e2f59fb2ed128081001328/train/python
+
+def print_array(arr):
+	return ",".join(map(str, arr))
+
+
+assert print_array([1, 2, 3]) == "1,2,3"
+assert print_array([4, 5, 6, 7]) == "4,5,6,7"
+assert print_array([8, 9]) == "8,9"
+
+
+# https://www.codewars.com/kata/56f6919a6b88de18ff000b36/train/python
+
+def how_many_dalmatians(n):
+	dogs = ["Hardly any", "More than a handful!", "Woah that's a lot of dogs!", "101 DALMATIONS!!!"]
+
+	response = dogs[0] if n <= 10 else dogs[1] if (n <= 50) else dogs[3] if n == 101 else dogs[2]
+	return response
+
+
+assert how_many_dalmatians(100) == "Woah that's a lot of dogs!"
+assert how_many_dalmatians(50) == "More than a handful!"
+assert how_many_dalmatians(10) == "Hardly any"
+assert how_many_dalmatians(101) == "101 DALMATIONS!!!"
+
+
+# https://www.codewars.com/kata/56a3f08aa9a6cc9b75000023/train/python
+
+def validate_usr(username):
+	if 4 <= len(username) < 17:
+		return all((char.isalpha() and char.islower()) or char.isdigit() or char == '_' for char in username)
+	return False
+
+
+assert validate_usr('p1pp1') == True
+assert validate_usr('asd43 34') == False
+assert validate_usr('asd43_34') == True
+
+
+# https://www.codewars.com/kata/5641a03210e973055a00000d/train/python
+
+def two_decimal_places(n):
+	return round(n, 2)
+
+
+assert two_decimal_places(4.659725356) == 4.66
+assert two_decimal_places(173735326.3783732637948948) == 173735326.38
+assert two_decimal_places(4.653725356) == 4.65
+
+
+# https://www.codewars.com/kata/55902c5eaa8069a5b4000083/train/python
+
+
+def format_money(amount):
+	return f"${amount:.2f}"
+
+
+assert format_money(0) == '$0.00'
+assert format_money(39.99) == '$39.99'
+assert format_money(81) == '$81.00'
+
+
+def generate_range(start, stop, step):
+	return list(range(start, stop + 1, step))
+
+
+assert generate_range(1, 10, 1) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+assert generate_range(-10, 1, 1) == [-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1]
+assert generate_range(1, 15, 20) == [1]
+assert generate_range(1, 7, 2) == [1, 3, 5, 7]
+
+
+# https://www.codewars.com/kata/55d277882e139d0b6000005d/train/python duplicat metody avr
+
+def find_average(nums):
+	return sum(nums) / len(nums) if nums else 0
+
+
+assert find_average([1, 3, 5, 7]) == 4
+assert find_average([-1, 3, 5, -7]) == 0
+assert find_average([5, 7, 3, 7]) == 5.5
+
+
+# https://www.codewars.com/kata/5dd462a573ee6d0014ce715b/train/python
+
+def same_case(a, b):
+	if a.isalpha() and b.isalpha():
+		return 1 if (a.islower() and b.islower()) or (a.isupper() and b.isupper()) else 0
+	return -1
+
+
+assert same_case('d', 'd') == 1
+assert same_case('A', 's') == 0
+assert same_case('\t', 'Z') == -1
+
+
+# https://www.codewars.com/kata/57a5b0dfcf1fa526bb000118/train/python
+
+def distinct(seq):
+	result = []
+	for elem in seq:
+		if elem not in result:
+			result.append(elem)
+	return result
+
+
+assert distinct([1, 2]) == [1, 2]
+assert distinct([1, 1, 2]) == [1, 2]
+assert distinct([1, 1, 1, 2, 3, 4, 5]) == [1, 2, 3, 4, 5]
