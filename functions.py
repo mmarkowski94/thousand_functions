@@ -14,13 +14,13 @@ assert add(0, 4) == 4
 assert add(1, 6) == 7
 
 
-def sum_list(numbers):
+def sum_from_list(numbers):
 	return sum(numbers)
 
 
-assert sum_list([2, 3, 7]) == 12
-assert sum_list([4, 5, 8]) == 17
-assert sum_list([1, 1, 1]) == 3
+assert sum_from_list([2, 3, 7]) == 12
+assert sum_from_list([4, 5, 8]) == 17
+assert sum_from_list([1, 1, 1]) == 3
 
 
 def subtract(a, b):
@@ -383,6 +383,66 @@ assert is_in_list(2, [1, 2, 3]) == True
 assert is_in_list(5, [1, 2, 3, 4]) == False
 assert is_in_list(5, [1, 2, 3, 4, 5]) == True
 
+
+def have_same_length(l1, l2):
+	return len(l1) == len(l2)
+
+
+assert have_same_length([1, 7, 4, 6], [3, 4, 5]) == False
+assert have_same_length([6, 0], [3, 1]) == True
+assert have_same_length([2, 3, 4, 6, 8], [1, 22, 3, 45, 5]) == True
+
+
+def have_different_length(l1, l2):
+	return len(l1) != len(l2)
+
+
+assert have_different_length([1, 7, 4, 6], [3, 4, 5]) == True
+assert have_different_length([6, 0], [3, 1]) == False
+assert have_different_length([2, 3, 4, 6, 8], [1, 22, 3, 45, 5]) == False
+
+
+def merge_lists(list_1, list_2):
+	return list_1 + list_2
+
+
+assert merge_lists([1, 2], [3, 4, 5]) == [1, 2, 3, 4, 5]
+assert merge_lists([1], [2, 3]) == [1, 2, 3]
+assert merge_lists([0], [1, 2, 3, 4, 5]) == [0, 1, 2, 3, 4, 5]
+
+
+def sum_lists(list_1, list_2):
+	if have_different_length(list_1, list_2):
+		return "List lengths must be the same"
+	return [item_l1 + item_l2 for item_l1, item_l2 in zip(list_1, list_2)]
+
+
+assert sum_lists([1, 2], [3, 4, 5]) == "List lengths must be the same"
+assert sum_lists([1, 3], [2, 3]) == [3, 6]
+assert sum_lists([2, 3, 4, 6, 8], [1, 2, 3, 4, 5]) == [3, 5, 7, 10, 13]
+
+
+def subtract_lists(list_1, list_2):
+	if have_different_length(list_1, list_2):
+		return "List lengths must be the same"
+	return [item_l1 - item_l2 for item_l1, item_l2 in zip(list_1, list_2)]
+
+
+assert subtract_lists([1, 2, 5, 6], [3, 4, 5]) == "List lengths must be the same"
+assert subtract_lists([6, 2], [3, 1]) == [3, 1]
+assert subtract_lists([2, 3, 4, 6, 8], [1, 2, 3, 4, 5]) == [1, 1, 1, 2, 3]
+
+
+def multiply_lists(list_1, list_2):
+	if have_different_length(list_1, list_2):
+		return "List lengths must be the same"
+	return [item_l1 * item_l2 for item_l1, item_l2 in zip(list_1, list_2)]
+
+
+assert multiply_lists([1, 2, 5], [1, 3, 4, 5]) == "List lengths must be the same"
+assert multiply_lists([6, 2], [3, 1]) == [18, 2]
+assert multiply_lists([2, 3, 4, 6, 8], [1, 2, 3, 4, 5]) == [2, 6, 12, 24, 40]
+
 """
 Other functions
 """
@@ -395,6 +455,42 @@ def html_p(text):
 assert html_p("kajak") == "<p>kajak</p>"
 assert html_p("pies") == "<p>pies</p>"
 assert html_p("kot") == "<p>kot</p>"
+
+
+def celsius_to_fahrenheit(celsius):
+	return (celsius * 1.8) + 32
+
+
+assert celsius_to_fahrenheit(0) == 32
+assert celsius_to_fahrenheit(10) == 50
+assert celsius_to_fahrenheit(20) == 68
+
+
+def fahrenheit_to_celsius(fahrenheit):
+	return 5 / 9 * (fahrenheit - 32)
+
+
+assert fahrenheit_to_celsius(50) == 10
+assert fahrenheit_to_celsius(68) == 20
+assert fahrenheit_to_celsius(77) == 25
+
+
+def celsius_to_kelvin(celsius):
+	return celsius + 273.15
+
+
+assert celsius_to_kelvin(0) == 273.15
+assert celsius_to_kelvin(20) == 293.15
+assert celsius_to_kelvin(-10) == 263.15
+
+
+def kelvin_to_celsius(kelvin):
+	return kelvin - 273.15
+
+
+assert kelvin_to_celsius(273.15) == 0
+assert kelvin_to_celsius(293.15) == 20
+assert kelvin_to_celsius(263.15) == -10
 
 """
 Codewars functions
@@ -956,3 +1052,124 @@ def distinct(seq):
 assert distinct([1, 2]) == [1, 2]
 assert distinct([1, 1, 2]) == [1, 2]
 assert distinct([1, 1, 1, 2, 3, 4, 5]) == [1, 2, 3, 4, 5]
+
+
+# https://www.codewars.com/kata/514a7ac1a33775cbb500001e/train/python
+
+def mystery():
+	return {'sanity': 'Hello'}
+
+
+assert isinstance(mystery(), dict)
+assert "sanity" in mystery()
+assert mystery()["sanity"] == "Hello"
+
+
+# https://www.codewars.com/kata/568dc014440f03b13900001d/train/python
+
+def get_drink_by_profession(param):
+	drinks = {
+		"jabroni": "Patron Tequila",
+		"school counselor": "Anything with Alcohol",
+		"programmer": "Hipster Craft Beer",
+		"bike gang member": "Moonshine",
+		"politician": "Your tax dollars",
+		"rapper": "Cristal"
+	}
+
+	return drinks.get(param.lower(), "Beer")
+
+
+assert get_drink_by_profession("jabrOni") == "Patron Tequila"
+assert get_drink_by_profession("scHOOl counselor") == "Anything with Alcohol"
+assert get_drink_by_profession("wrong_value") == "Beer"
+
+
+# https://www.codewars.com/kata/56b29582461215098d00000f/train/python
+
+
+def pipe_fix(nums):
+	return list(range(nums[0], nums[-1] + 1))
+
+
+assert pipe_fix([1, 3, 5]) == [1, 2, 3, 4, 5]
+assert pipe_fix([4, 6, 7]) == [4, 5, 6, 7]
+assert pipe_fix([10, 12, 14]) == [10, 11, 12, 13, 14]
+
+
+# https://www.codewars.com/kata/55a5bfaa756cfede78000026/train/python
+
+def problem(a):
+	return "Error" if isinstance(a, str) else a * 50 + 6
+
+
+assert problem("hello") == "Error"
+assert problem(1) == 56
+assert problem(2) == 106
+
+
+# https://www.codewars.com/kata/51f9d93b4095e0a7200001b8/train/python
+
+def how_many_light_sabers_do_you_own(name=None):
+	return 18 if name == "Zach" else 0
+
+
+assert how_many_light_sabers_do_you_own("Zach") == 18
+assert how_many_light_sabers_do_you_own() == 0
+assert how_many_light_sabers_do_you_own("zach") == 0
+
+
+# https://www.codewars.com/kata/57089707fe2d01529f00024a/train/python
+
+def check_alive(health):
+	return health > 0
+
+
+assert check_alive(5) == True
+assert check_alive(0) == False
+assert check_alive(-5) == False
+
+
+# https://www.codewars.com/kata/595970246c9b8fa0a8000086/train/python
+
+def capitalize_word(word: str) -> str:
+	return word.capitalize()
+
+
+assert capitalize_word('word') == 'Word'
+assert capitalize_word('i') == 'I'
+assert capitalize_word('glasswear') == 'Glasswear'
+
+
+# https://www.codewars.com/kata/56b7f2f3f18876033f000307
+
+def in_asc_order(arr):
+	return arr == sorted(arr)
+
+
+assert in_asc_order([1, 3, 2]) == False
+assert in_asc_order([1, 4, 13, 97, 508, 1047, 20058]) == True
+assert in_asc_order([56, 98, 123, 67, 742, 1024, 32, 90969]) == False
+
+
+# https://www.codewars.com/kata/55c28f7304e3eaebef0000da/train/python
+
+def create_array(n):
+	return list(range(1, n + 1))
+
+
+assert create_array(3) == [1, 2, 3]
+assert create_array(5) == [1, 2, 3, 4, 5]
+assert create_array(0) == []
+
+
+# https://www.codewars.com/kata/5417423f9e2e6c2f040002ae/train/python
+
+def digitize(n):
+	# return [int(digit) for digit in str(n)]
+	return list(map(int, str(n)))
+
+
+assert digitize(0) == [0]
+assert digitize(1230) == [1, 2, 3, 0]
+assert digitize(8675309) == [8, 6, 7, 5, 3, 0, 9]
