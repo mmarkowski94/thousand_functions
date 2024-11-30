@@ -1,4 +1,5 @@
 from collections import Counter
+import math
 
 """
 Math functions
@@ -1249,3 +1250,380 @@ def generate_shape(n):
 assert generate_shape(1) == "+"
 assert generate_shape(2) == "++\n++"
 assert generate_shape(3) == "+++\n+++\n+++"
+
+
+# https://www.codewars.com/kata/55eea63119278d571d00006a/train/python
+
+
+def next_id(arr):
+	return 0 if not arr else [elem for elem in range(0, max(arr) + 2) if elem not in arr][0]
+
+
+assert next_id([0, 0, 1, 1, 2, 2]) == 3
+assert next_id([0, 1, 1, 1, 3, 2]) == 4
+assert next_id([0, 1, 0, 2, 0, 3]) == 4
+
+
+# https://www.codewars.com/kata/56453a12fcee9a6c4700009c/train/python
+
+def close_compare(a, b, margin=0):
+	return 0 if abs(a - b) <= margin else -1 if a < b else 1
+
+
+assert close_compare(8, 5, 3) == 0
+assert close_compare(8.1, 5, 3) == 1
+assert close_compare(1.99, 5, 3) == -1
+
+
+# https://www.codewars.com/kata/5ac6932b2f317b96980000ca/train/python
+
+def min_value(digits):
+	return int("".join(map(str, sorted(set(digits)))))
+
+
+assert min_value([1, 3, 1]) == 13
+assert min_value([4, 7, 5, 7]) == 457
+assert min_value([4, 8, 1, 4]) == 148
+
+
+# https://www.codewars.com/kata/5aba780a6a176b029800041c/train/python
+
+def max_multiple(divisor, bound):
+	return bound - bound % divisor
+
+
+assert max_multiple(3, 10) == 9
+assert max_multiple(7, 17) == 14
+assert max_multiple(10, 50) == 50
+
+
+# https://www.codewars.com/kata/52f3149496de55aded000410/train/python
+
+def sum_digits(number):
+	return sum(map(int, str(abs(number))))
+
+
+assert sum_digits(10) == 1
+assert sum_digits(99) == 18
+assert sum_digits(-32) == 5
+
+
+# https://www.codewars.com/kata/58daa7617332e59593000006
+
+
+def find_longest(arr):
+	return max(arr, key=lambda number: len(str(number)))
+
+
+assert find_longest([1, 10, 100]) == 100
+assert find_longest([9000, 8, 800]) == 9000
+assert find_longest([8, 900, 500]) == 900
+
+
+# https://www.codewars.com/kata/554b4ac871d6813a03000035/train/python
+
+def high_and_low(numbers):
+	numbers_list = list(map(int, numbers.split(" ")))
+	return f"{max(numbers_list)} {min(numbers_list)}"
+
+
+assert high_and_low("1 2 3") == "3 1"
+assert high_and_low("4 5 6 7 8") == "8 4"
+assert high_and_low("-1 -2 -3") == "-1 -3"
+
+
+# https://www.codewars.com/kata/546e2562b03326a88e000020
+
+def square_digits(num):
+	return int("".join(str(int(digit) ** 2) for digit in str(num)))
+
+
+assert square_digits(9119) == 811181
+assert square_digits(0) == 0
+assert square_digits(123) == 149
+
+
+# https://www.codewars.com/kata/54ff3102c1bad923760001f3
+
+def get_count(sentence):
+	return len([letter for letter in sentence if letter in 'aeiou'])
+
+
+assert get_count("hello") == 2
+assert get_count("world") == 1
+assert get_count("aeiou") == 5
+
+
+# https://www.codewars.com/kata/5467e4d82edf8bbf40000155/train/python
+
+def descending_order(num):
+	return int("".join(sorted(str(num), reverse=True)))
+
+
+assert descending_order(0) == 0
+assert descending_order(15) == 51
+assert descending_order(123456789) == 987654321
+
+
+# https://www.codewars.com/kata/55685cd7ad70877c23000102/train/python
+
+def make_negative(number):
+	return number if number <= 0 else -number
+
+
+assert make_negative(-5) == -5
+assert make_negative(0) == 0
+assert make_negative(5) == -5
+
+
+# https://www.codewars.com/kata/5715eaedb436cf5606000381/train/python
+
+
+def positive_sum(arr):
+	return sum((number for number in arr if number > 0))
+
+
+assert positive_sum([1, 2, 3, 4, 5]) == 15
+assert positive_sum([1, -2, 3, 4, 5]) == 13
+assert positive_sum([-1, 2, 3, 4, -5]) == 9
+
+
+# https://www.codewars.com/kata/5265326f5fda8eb1160004c8
+
+def number_to_string(num):
+	return str(num)
+
+
+assert number_to_string(67) == '67'
+assert number_to_string(79585) == '79585'
+assert number_to_string(79585) == "79585"
+
+
+# https://www.codewars.com/kata/53dbd5315a3c69eed20002dd
+
+def filter_list(l):
+	return [item for item in l if isinstance(item, int)]
+
+
+assert filter_list([1, 2, 'a', 'b']) == [1, 2]
+assert filter_list([1, 'a', 'b', 0, 15]) == [1, 0, 15]
+assert filter_list([1, 2, 'aasf', '1', '123', 123]) == [1, 2, 123]
+
+
+# https://www.codewars.com/kata/56dec885c54a926dcd001095/train/python
+def opposite(number):
+	return number * -1
+
+
+assert opposite(1) == -1
+assert opposite(25.6) == -25.6
+assert opposite(0) == 0
+
+
+# https://www.codewars.com/kata/57cebe1dc6fdc20c57000ac9/train/python
+
+def find_short(s):
+	return min(map(len, s.split(" ")))
+
+
+assert find_short("bitcoin take over the world maybe who knows perhaps") == 3
+assert find_short("turns out random test cases are easier than writing out basic ones") == 3
+assert find_short("lets talk about javascript the best language") == 3
+
+
+# https://www.codewars.com/kata/57a0e5c372292dd76d000d7e
+
+def repeat_str(repeat, string):
+	return string * repeat
+
+
+assert repeat_str(4, 'a') == 'aaaa'
+assert repeat_str(3, 'hello ') == 'hello hello hello '
+assert repeat_str(2, 'abc') == 'abcabc'
+
+
+# https://www.codewars.com/kata/558fc85d8fd1938afb000014/train/python
+
+def sum_two_smallest_numbers(numbers):
+	sorted_numbers = sorted(numbers)
+	return sorted_numbers[0] + sorted_numbers[1]
+
+
+assert sum_two_smallest_numbers([5, 8, 12, 18, 22]) == 13
+assert sum_two_smallest_numbers([7, 15, 12, 18, 22]) == 19
+assert sum_two_smallest_numbers([25, 42, 12, 18, 22]) == 30
+
+
+# https://www.codewars.com/kata/57eae20f5500ad98e50002c5
+
+def no_space(x):
+	return x.replace(' ', '')
+
+
+assert no_space('8aaaaa dddd r     ') == '8aaaaaddddr'
+assert no_space('jfBm  gk lf8hg  88lbe8 ') == 'jfBmgklf8hg88lbe8'
+assert no_space('8j aam') == '8jaam'
+
+
+# https://www.codewars.com/kata/55f2b110f61eb01779000053/train/python
+
+def get_sum(a, b):
+	return sum(list(range(a, b + 1))) if a < b else sum(list(range(b, a + 1)))
+
+
+assert get_sum(0, 1) == 1
+assert get_sum(0, -1) == -1
+assert get_sum(2, 4) == 9
+
+
+# https://www.codewars.com/kata/56747fd5cb988479af000028/train/python
+
+def get_middle(s):
+	return s[len(s) // 2] if len(s) % 2 != 0 else s[len(s) // 2 - 1] + s[len(s) // 2]
+
+
+assert get_middle("test") == "es"
+assert get_middle("testing") == "t"
+assert get_middle("middle") == "dd"
+
+
+# https://www.codewars.com/kata/5656b6906de340bd1b0000ac/train/python
+
+
+def longest(a1, a2):
+	return "".join(sorted(set(a1 + a2)))
+
+
+assert longest("aretheyhere", "yestheyarehere") == "aehrsty"
+assert longest("loopingisfunbutdangerous", "lessdangerousthancoding") == "abcdefghilnoprstu"
+assert longest("inmanylanguages", "theresapairoffunctions") == "acefghilmnoprstuy"
+
+
+# https://www.codewars.com/kata/53369039d7ab3ac506000467/train/python
+
+def bool_to_word(boolean):
+	return "Yes" if boolean else "No"
+
+
+assert bool_to_word(True) == 'Yes'
+assert bool_to_word(False) == 'No'
+
+
+# https://www.codewars.com/kata/544675c6f971f7399a000e79
+
+def string_to_number(s):
+	return int(s)
+
+
+assert string_to_number("1234") == 1234
+assert string_to_number("605") == 605
+assert string_to_number("1405") == 1405
+
+
+# https://www.codewars.com/kata/55d24f55d7dd296eb9000030/train/python
+
+def summation(num):
+	return sum(range(1, num + 1))
+
+
+assert summation(1) == 1
+assert summation(8) == 36
+assert summation(22) == 253
+
+
+# https://www.codewars.com/kata/515e271a311df0350d00000f/train/python
+
+def square_sum(numbers):
+	return sum(x ** 2 for x in numbers)
+
+
+assert square_sum([1, 2]) == 5
+assert square_sum([0, 3, 4, 5]) == 50
+assert square_sum([]) == 0
+
+
+def century(year):
+	return math.ceil(year / 100)
+
+
+assert century(1705) == 18
+assert century(1900) == 19
+assert century(1601) == 17
+
+
+# https://www.codewars.com/kata/51f2d1cafc9c0f745c00037d/train/python
+
+def solution(text, ending):
+	return text.endswith(ending)
+
+
+assert solution('hello', 'llo') == True
+assert solution('python', 'thon') == True
+assert solution('world', 'word') == False
+
+
+# https://www.codewars.com/kata/523b4ff7adca849afe000035
+
+
+def greet():
+	return "hello world!"
+
+
+assert greet() == 'hello world!'
+
+
+# https://www.codewars.com/kata/56541980fa08ab47a0000040/train/python
+
+
+def printer_error(s):
+	return f"{sum(1 for x in s if x not in 'abcdefghijklm')}/{len(s)}"
+
+
+assert printer_error("aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbmmmmmmmmmmmmmmmmmmmxyz") == "3/56"
+assert printer_error("kkkwwwaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbmmmmmmmmmmmmmmmmmmmxyz") == "6/60"
+assert printer_error("kkkwwwaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbmmmmmmmmmmmmmmmmmmmxyzuuuuu") == "11/65"
+
+
+# https://www.codewars.com/kata/57eadb7ecd143f4c9c0000a3/train/python
+
+def abbrev_name(name):
+	return ".".join((word[:1] for word in name.split())).upper()
+
+
+assert abbrev_name("Sam Harris") == "S.H"
+assert abbrev_name("patrick feenan") == "P.F"
+assert abbrev_name("Evan C") == "E.C"
+
+
+# https://www.codewars.com/kata/5601409514fc93442500010b/train/python
+
+
+def better_than_average(class_points, your_points):
+	return your_points > sum(class_points) / len(class_points)
+
+
+assert better_than_average([12, 23, 34, 45, 56, 67, 78, 89, 90], 69) == True
+assert better_than_average([41, 75, 72, 56, 80, 82, 81, 33], 50) == False
+assert better_than_average([29, 55, 74, 60, 11, 90, 67, 28], 21) == False
+
+
+# https://www.codewars.com/kata/56bc28ad5bdaeb48760009b0
+
+def remove_char(s):
+	return s[1:-1]
+
+
+assert remove_char('country') == 'ountr'
+assert remove_char('person') == 'erso'
+assert remove_char('place') == 'lac'
+
+
+# https://www.codewars.com/kata/54edbc7200b811e956000556/train/python
+
+def count_sheeps(sheep):
+	return sum(1 for x in sheep if x)
+
+
+assert count_sheeps([True, False, True, True, False, True]) == 4
+assert count_sheeps([False, False, False, False, False]) == 0
+assert count_sheeps([True, True, True, True]) == 4
