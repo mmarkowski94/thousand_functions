@@ -1627,3 +1627,24 @@ def count_sheeps(sheep):
 assert count_sheeps([True, False, True, True, False, True]) == 4
 assert count_sheeps([False, False, False, False, False]) == 0
 assert count_sheeps([True, True, True, True]) == 4
+
+
+# https://www.codewars.com/kata/5545f109004975ea66000086/train/python
+
+def is_divisible(n, x, y):
+	return n % x == 0 and n % y == 0
+
+
+assert is_divisible(3, 2, 2) == False
+assert is_divisible(3, 3, 4) == False
+assert is_divisible(12, 3, 4) == True
+
+
+def basic_op(operator, value1, value2):
+	return eval(f"{value1} {operator} {value2}")
+
+
+assert basic_op('+', 4, 7) == 11
+assert basic_op('-', 15, 18) == -3
+assert basic_op('*', 5, 5) == 25
+assert basic_op('/', 49, 7) == 7
