@@ -908,28 +908,6 @@ assert array('1,2') is None
 assert array('1,2,3,4,5') == '2 3 4'
 
 
-# https://www.codewars.com/kata/57241e0f440cd279b5000829/train/python
-
-# def sum_mul(n, m): todo: fix that
-# 	if n >= m:
-# 		return "INVALID"
-#
-# 	result = 0
-# 	count  = 1
-#
-# 	while n * count <= m:
-# 		result += n * count
-# 		count += 1
-# 	return result
-#
-#
-#
-# assert sum_mul(0, 0) == 'INVALID'
-# assert sum_mul(2, 9) == 20
-# assert sum_mul(4, -7) == 'INVALID'
-# assert sum_mul(4, 123) == 1860
-
-
 # https://www.codewars.com/kata/57a049e253ba33ac5e000212/train/python
 
 def factorial(n):
@@ -1173,3 +1151,101 @@ def digitize(n):
 assert digitize(0) == [0]
 assert digitize(1230) == [1, 2, 3, 0]
 assert digitize(8675309) == [8, 6, 7, 5, 3, 0, 9]
+
+
+# https://www.codewars.com/kata/5761a717780f8950ce001473/train/python
+
+def calculate_age(year_of_birth, current_year):
+	result = current_year - year_of_birth
+
+	if result > 0:
+		msg = "s" if result > 1 else ""
+		return f"You are {result} year{msg} old."
+	elif result < 0:
+		return f"You will be born in {-result} year{'s' if -result > 1 else ''}."
+	else:
+		return "You were born this very year!"
+
+
+assert calculate_age(2000, 1990) == "You will be born in 10 years."
+assert calculate_age(2000, 2000) == "You were born this very year!"
+assert calculate_age(900, 2900) == "You are 2000 years old."
+
+
+# https://www.codewars.com/kata/57241e0f440cd279b5000829/train/python
+
+def sum_mul(n, m):
+	return "INVALID" if n <= 0 or m <= 0 else sum(range(n, m, n))
+
+
+assert sum_mul(0, 0) == 'INVALID'
+assert sum_mul(2, 9) == 20
+assert sum_mul(4, -7) == 'INVALID'
+
+
+# https://www.codewars.com/kata/570597e258b58f6edc00230d
+
+
+def array(string):
+	return None if len(string.split(',')) < 3 else ' '.join(string.split(',')[1:-1])
+
+
+assert array('1,2,3,4') == '2 3'
+assert array('1,2,3,4,5') == '2 3 4'
+assert array('') is None
+
+# https://www.codewars.com/kata/53f1015fa9fe02cbda00111a/train/python
+
+import random
+
+
+class Ghost(object):
+	def __init__(self):
+		self.color = random.choice(["white", "yellow", "purple", "red"])
+
+
+for _ in range(10):  # Powtarzamy inicjalizację 10 razy
+	ghost = Ghost()
+	assert ghost.color in ["white", "yellow", "purple", "red"]
+
+
+# https://www.codewars.com/kata/55f73f66d160f1f1db000059/train/python
+
+def combine_names(name, surname):
+	return f"{name} {surname}"
+
+
+assert combine_names("James", "Stevens") == "James Stevens"
+assert combine_names("Davy", "Back") == "Davy Back"
+assert combine_names("Arthur", "Dent") == "Arthur Dent"
+
+
+# https://www.codewars.com/kata/570669d8cb7293a2d1001473/train/python
+
+def if_chuck_says_so():
+	return 1 < 0
+
+
+assert if_chuck_says_so() == False
+
+
+# https://www.codewars.com/kata/53da3dbb4a5168369a0000fe/train/python
+
+def even_or_odd(number):
+	return "Even" if number % 2 == 0 else "Odd"
+
+
+assert even_or_odd(2) == "Even"
+assert even_or_odd(7) == "Odd"
+assert even_or_odd(0) == "Even"
+
+
+# https://www.codewars.com/kata/59a96d71dbe3b06c0200009c/train/python
+
+def generate_shape(n):
+	return "\n".join(["+" * n for _ in range(n)])
+
+
+assert generate_shape(1) == "+"
+assert generate_shape(2) == "++\n++"
+assert generate_shape(3) == "+++\n+++\n+++"
