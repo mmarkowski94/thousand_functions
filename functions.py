@@ -1648,3 +1648,95 @@ assert basic_op('+', 4, 7) == 11
 assert basic_op('-', 15, 18) == -3
 assert basic_op('*', 5, 5) == 25
 assert basic_op('/', 49, 7) == 7
+
+
+# https://www.codewars.com/kata/56cd44e1aa4ac7879200010b/train/python
+
+def is_uppercase(inp: str) -> bool:
+	return len([char for char in inp if char.islower()]) == 0
+
+
+assert is_uppercase("rwerwerwer") == False
+assert is_uppercase("ASD") == True
+assert is_uppercase("TEST") == True
+
+
+# https://www.codewars.com/kata/54598d1fcbae2ae05200112c/train/python
+
+def _all(seq, fun):
+	return all(map(fun, seq))
+
+
+assert _all((1, 2, 3, 4, 5), lambda x: x < 9) == True
+assert _all((1, 2, 3, 4, 5), lambda x: x > 9) == False
+assert _all((2, 4, 6, 8, 10), lambda x: x % 2 == 0) == True
+
+
+# https://www.codewars.com/kata/57a386117cb1f31890000039/train/python
+
+
+def parse_float(string):
+	try:
+		return float(string) if isinstance(string, str) else "".join(string)
+	except ValueError:
+		return None
+
+
+assert parse_float("123.456") == 123.456
+assert parse_float("abc") is None
+assert parse_float("") is None
+
+
+# https://www.codewars.com/kata/5a4138acf28b82aa43000117/train/python
+
+def adjacent_element_product(array):
+	result = float('-inf')
+	for index in range(len(array) - 1):
+		product = array[index] * array[index + 1]
+		if product > result:
+			result = product
+	return result
+
+
+assert adjacent_element_product([5, 8]) == 40
+assert adjacent_element_product([1, 2, 3]) == 6
+assert adjacent_element_product([1, 5, 10, 9]) == 90
+
+
+# https://www.codewars.com/kata/55a14f75ceda999ced000048/train/python
+
+def temple_strings(obj, feature):
+	return f"{obj} are {feature}"
+
+
+# https://www.codewars.com/kata/53d16bd82578b1fb5b00128c/train/python
+
+def grader(score):
+	if score > 1 or score < 0.6:
+		return "F"
+	elif score >= 0.9:
+		return "A"
+	elif score >= 0.8:
+		return "B"
+	elif score >= 0.7:
+		return "C"
+	else:
+		return "D"
+
+
+assert grader(1.01) == "F"
+assert grader(0.20) == "F"
+assert grader(0.85) == "B"
+assert grader(0.75) == "C"
+
+
+# https://www.codewars.com/kata/55c933c115a8c426ac000082/train/python
+
+
+def eval_object(v):
+	return eval(f"{v['a']} {v['operation']} {v['b']}")
+
+
+assert eval_object({'a': 1, 'b': 1, 'operation': '+'}) == 2
+assert eval_object({'a': 1, 'b': 1, 'operation': '-'}) == 0
+assert eval_object({'a': 1, 'b': 1, 'operation': '/'}) == 1
