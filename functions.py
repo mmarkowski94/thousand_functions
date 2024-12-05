@@ -1740,3 +1740,166 @@ def eval_object(v):
 assert eval_object({'a': 1, 'b': 1, 'operation': '+'}) == 2
 assert eval_object({'a': 1, 'b': 1, 'operation': '-'}) == 0
 assert eval_object({'a': 1, 'b': 1, 'operation': '/'}) == 1
+
+
+# https://www.codewars.com/kata/57f781872e3d8ca2a000007e/train/python
+
+def maps(a):
+	return [number * 2 for number in a]
+
+
+assert maps([1, 2, 3]) == [2, 4, 6]
+assert maps([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]) == [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+assert maps([]) == []
+
+
+def lovefunc(flower1, flower2):
+	return True if (flower1 % 2 == 0 and flower2 % 2 != 0) or (flower1 % 2 != 0 and flower2 % 2 == 0) else False
+
+
+assert lovefunc(1, 4) == True
+assert lovefunc(2, 2) == False
+assert lovefunc(0, 1) == True
+
+
+# https://www.codewars.com/kata/5899dc03bc95b1bf1b0000ad/train/python
+
+def invert(lst):
+	return [number * -1 for number in lst]
+
+
+assert invert([1, 2, 3, 4, 5]) == [-1, -2, -3, -4, -5]
+assert invert([1, -2, 3, -4, 5]) == [-1, 2, -3, 4, -5]
+assert invert([]) == []
+
+
+# https://www.codewars.com/kata/551b4501ac0447318f0009cd/train/python
+
+def boolean_to_string(b):
+	return str(b)
+
+
+assert boolean_to_string(True) == "True"
+assert boolean_to_string(False) == "False"
+
+
+# https://www.codewars.com/kata/53af2b8861023f1d88000832
+
+
+def are_you_playing_banjo(name):
+	return f"{name} {'plays banjo' if name.lower().startswith("r") else 'does not play banjo'}"
+
+
+assert are_you_playing_banjo("martin") == "martin does not play banjo"
+assert are_you_playing_banjo("Rikke") == "Rikke plays banjo"
+assert are_you_playing_banjo("bravo") == "bravo does not play banjo"
+
+
+def simple_multiplication(number):
+	return number * 8 if number % 2 == 0 else number * 9
+
+
+assert simple_multiplication(2) == 16
+assert simple_multiplication(1) == 9
+assert simple_multiplication(8) == 64
+
+
+def count_positives_sum_negatives(arr):
+	return [] if arr == [] else [sum(1 for number in arr if number > 0), sum(number for number in arr if number < 0)]
+
+
+assert count_positives_sum_negatives([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]) == [10, -65]
+assert count_positives_sum_negatives([0, 2, 3, 0, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14]) == [8, -50]
+assert count_positives_sum_negatives([1]) == [1, 0]
+
+
+# https://www.codewars.com/kata/57cc975ed542d3148f00015b/train/python
+
+def check(seq, elem):
+	return elem in seq
+
+
+assert check([1, 2, 3, 4], 3) == True
+assert check([1, 2, 3, 4], 5) == False
+assert check("hello", "e") == True
+
+
+# https://www.codewars.com/kata/56598d8076ee7a0759000087/train/python
+
+def calculate_tip(amount, rating):
+	tip_percentage = {
+		"terrible": 0,
+		"poor": 5,
+		"good": 10,
+		"great": 15,
+		"excellent": 20
+	}
+
+	return math.ceil(amount * tip_percentage[rating.lower()] / 100) if tip_percentage.get(rating.lower(),
+																						  None) is not None else "Rating not recognised"
+
+
+assert calculate_tip(30, "poor") == 2
+assert calculate_tip(20, "Excellent") == 4
+assert calculate_tip(20, "hi") == 'Rating not recognised'
+
+
+# https://www.codewars.com/kata/57126304cdbf63c6770012bd/train/python
+
+def is_digit(s):
+	try:
+		float(s)
+		return True
+	except ValueError:
+		return False
+
+
+assert is_digit("s2324") == False
+assert is_digit("-234.4") == True
+assert is_digit("3 4") == False
+
+
+def calculator(x, y, op):
+	return "unknown value" if op not in "+-*/" or (
+			not isinstance(x, (int, float)) or not isinstance(y, (int, float))) else eval(
+		f"{x} {op} {y}")
+
+
+assert calculator(5, 5, '*') == 25
+assert calculator(5, 4, '/') == 1.25
+assert calculator(6, 2, '&') == "unknown value"
+
+
+# https://www.codewars.com/kata/56676e8fabd2d1ff3000000c/train/python
+
+
+def find_needle(haystack):
+	return f"found the needle at position {haystack.index('needle')}"
+
+
+assert find_needle(['3', "2", None, 'needle', 'hay']) == 'found the needle at position 3'
+assert find_needle(['junk', 'hay', 'needle', 'lost']) == 'found the needle at position 2'
+assert find_needle(['needle', 4, 5]) == 'found the needle at position 0'
+
+
+# https://www.codewars.com/kata/58dbdccee5ee8fa2f9000058/train/python
+
+def sp_eng(sentence):
+	return "english" in sentence.lower()
+
+
+assert sp_eng("engliish") == False
+assert sp_eng("1234egn lis;h") == False
+assert sp_eng("1234english ;k") == True
+
+
+# https://www.codewars.com/kata/5708f682c69b48047b000e07/train/python
+
+
+def multiply_(n):
+	return n * 5 ** len(str(abs(n)))
+
+
+assert multiply_(10) == 250
+assert multiply_(5) == 25
+assert multiply_(200) == 25000
