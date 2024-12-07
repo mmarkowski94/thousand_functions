@@ -1903,3 +1903,218 @@ def multiply_(n):
 assert multiply_(10) == 250
 assert multiply_(5) == 25
 assert multiply_(200) == 25000
+
+
+# https://www.codewars.com/kata/557b5e0bddf29d861400005d/train/python
+
+def converter(mpg):
+	gallon_to_liters = 4.54609188
+	mile_to_kilometers = 1.609344
+
+	return round(mpg * mile_to_kilometers / gallon_to_liters, 2)
+
+
+assert converter(10) == 3.54
+assert converter(20) == 7.08
+assert converter(30) == 10.62
+
+
+# https://www.codewars.com/kata/54dba07f03e88a4cec000caf/train/python
+
+class Dog:
+	def __init__(self, breed):
+		self.breed = breed
+
+	@staticmethod
+	def bark():
+		return "Woof"
+
+
+snoopy = Dog("Beagle")
+scoobydoo = Dog("Great Dane")
+
+assert snoopy.bark() == "Woof"
+assert scoobydoo.bark() == "Woof"
+
+
+# https://www.codewars.com/kata/55f9b48403f6b87a7c0000bd/train/python
+
+def paperwork(n, m):
+	return m * n if n >= 0 and m >= 0 else 0
+
+
+assert paperwork(5, 5) == 25, "Failed at Paperwork(5, 5)"
+assert paperwork(1, 2) == 2, "Failed at Paperwork(1, 2)"
+assert paperwork(-5, 5) == 0, "Failed at Paperwork(-5, 5)"
+
+
+# https://www.codewars.com/kata/53dc23c68a0c93699800041d
+
+def smash(words):
+	return " ".join(words)
+
+
+assert smash(["hello", "world"]) == "hello world"
+assert smash(["hello", "amazing", "world"]) == "hello amazing world"
+assert smash(["this", "is", "a", "really", "long", "sentence"]) == "this is a really long sentence"
+
+
+# https://www.codewars.com/kata/57eae65a4321032ce000002d/train/python
+
+def fake_bin(x):
+	return "".join(("0" if int(digit) < 5 else "1" for digit in x))
+
+
+assert fake_bin("509321967506747") == "101000111101101"
+assert fake_bin("366058562030849490134388085") == "011011110000101010000011011"
+assert fake_bin("15889923") == "01111100"
+
+
+# https://www.codewars.com/kata/55f9bca8ecaa9eac7100004a/train/python
+
+def past(h, m, s):
+	return ((h * 3600) + (m * 60) + s) * 1000
+
+
+assert past(0, 1, 1) == 61000
+assert past(1, 1, 1) == 3661000
+assert past(0, 0, 0) == 0
+
+# https://www.codewars.com/kata/57f780909f7e8e3183000078/train/python
+
+
+from functools import reduce
+
+
+def grow(arr):
+	return reduce(lambda x, y: x * y, arr, 1)
+
+
+assert grow([1, 2, 3, 4]) == 24
+assert grow([5, 6, 7]) == 210
+assert grow([10, 0, 2]) == 0
+
+
+# https://www.codewars.com/kata/57a429e253ba3381850000fb/train/python
+
+
+def bmi(weight, height):
+	bmi_value = weight / height ** 2
+	if bmi_value <= 18.5:
+		return "Underweight"
+	elif bmi_value <= 25.0:
+		return "Normal"
+	elif bmi_value <= 30.0:
+		return "Overweight"
+	return "Obese"
+
+
+assert bmi(70, 1.75) == "Normal"
+assert bmi(80, 1.75) == "Overweight"
+assert bmi(100, 1.75) == "Obese"
+
+
+# https://www.codewars.com/kata/5a00e05cc374cb34d100000d/train/python
+
+def reverse_seq(n):
+	return list(range(n, 0, -1))
+
+
+assert reverse_seq(5) == [5, 4, 3, 2, 1]
+assert reverse_seq(3) == [3, 2, 1]
+assert reverse_seq(10) == [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+
+
+# https://www.codewars.com/kata/57e76bc428d6fbc2d500036d/train/python
+
+
+def string_to_array(s):
+	return s.split() if s else [""]
+
+
+assert string_to_array("Robin Singh") == ["Robin", "Singh"]
+assert string_to_array("CodeWars") == ["CodeWars"]
+assert string_to_array("I love arrays") == ["I", "love", "arrays"]
+
+
+# https://www.codewars.com/kata/53ee5429ba190077850011d4/train/python
+
+def double_integer(i):
+	return i * 2
+
+
+assert double_integer(2) == 4
+assert double_integer(4) == 8
+assert double_integer(-10) == -20
+
+
+# https://www.codewars.com/kata/5513795bd3fafb56c200049e/train/python
+
+def count_by(x, n):
+	return [n * x for n in range(1, n + 1)]
+
+
+assert count_by(1, 5) == [1, 2, 3, 4, 5]
+assert count_by(2, 5) == [2, 4, 6, 8, 10]
+assert count_by(3, 5) == [3, 6, 9, 12, 15]
+
+
+# https://www.codewars.com/kata/577a98a6ae28071780000989
+
+
+def minimum(arr):
+	return min(arr)
+
+
+def maximum(arr):
+	return max(arr)
+
+
+assert minimum([-1, -2, -3, -4, -5, -10]) == -10
+assert minimum([9]) == 9
+assert maximum([-52, 56, 30, 29, -54, 0, -110]) == 56
+assert maximum([4, 6, 2, 1, 9, 63, -134, 566]) == 566
+
+
+# https://www.codewars.com/kata/51c8991dee245d7ddf00000e/train/python
+
+def reverse_words(s):
+	return " ".join(s.split()[::-1])
+
+
+assert reverse_words("hello world!") == "world! hello"
+assert reverse_words("Python is awesome") == "awesome is Python"
+assert reverse_words("I love coding") == "coding love I"
+
+
+# https://www.codewars.com/kata/5a2be17aee1aaefe2a000151/train/python
+
+def array_plus_array(arr1, arr2):
+	return sum(arr1 + arr2)
+
+
+assert array_plus_array([1, 2, 3], [4, 5, 6]) == 21
+assert array_plus_array([-1, -2, -3], [-4, -5, -6]) == -21
+assert array_plus_array([0, 0, 0], [4, 5, 6]) == 15
+
+
+# https://www.codewars.com/kata/57ea5b0b75ae11d1e800006c/train/python
+
+def sort_by_length(arr):
+	return sorted(arr, key=lambda x: len(x))
+
+
+assert sort_by_length(["i", "to", "beg", "life"]) == ["i", "to", "beg", "life"]
+assert sort_by_length(["", "pizza", "brains", "moderately"]) == ["", "pizza", "brains", "moderately"]
+assert sort_by_length(["short", "longer", "longest"]) == ["short", "longer", "longest"]
+
+
+# https://www.codewars.com/kata/5a431c0de1ce0ec33a00000c/train/python
+
+def even_numbers(arr, n):
+	return [number for number in arr if number % 2 == 0][-n:]
+
+
+assert even_numbers([1, 2, 3, 4, 5, 6, 7, 8, 9], 3) == [4, 6, 8]
+assert even_numbers([-22, 5, 3, 11, 26, -6, -7, -8, -9, -8, 26], 2) == [-8, 26]
+assert even_numbers([6, -25, 3, 7, 5, 5, 7, -3, 23], 1) == [6]
