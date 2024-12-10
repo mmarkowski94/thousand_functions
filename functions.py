@@ -2192,9 +2192,222 @@ assert monkey_count(9) == [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 
 def quarter_of(month):
-	return 1 if month in [1, 2, 3] else 2 if month in [4, 5, 6] else 3 if month in [7, 8, 9] else 4
+	return math.ceil(month / 3)
 
 
 assert quarter_of(3) == 1
 assert quarter_of(8) == 3
 assert quarter_of(11) == 4
+
+
+# https://www.codewars.com/kata/59ca8246d751df55cc00014c/train/python
+
+def hero(bullets, dragons):
+	return bullets >= dragons * 2
+
+
+assert hero(10, 5) == True
+assert hero(7, 4) == False
+assert hero(4, 5) == False
+
+
+# https://www.codewars.com/kata/5861d28f124b35723e00005e/train/python
+
+
+def zero_fuel(distance_to_pump, mpg, fuel_left):
+	return distance_to_pump <= mpg * fuel_left
+
+
+assert zero_fuel(50, 25, 2) == True
+assert zero_fuel(100, 50, 1) == False
+assert zero_fuel(80, 50, 3) == True
+
+
+# https://www.codewars.com/kata/5b077ebdaf15be5c7f000077/train/python
+
+
+def count_sheep(n):
+	return "".join(str(number) + " sheep..." for number in range(1, n + 1))
+
+
+assert count_sheep(1) == "1 sheep..."
+assert count_sheep(2) == "1 sheep...2 sheep..."
+assert count_sheep(3) == "1 sheep...2 sheep...3 sheep..."
+
+
+# https://www.codewars.com/kata/55cbd4ba903825f7970000f5/train/python
+
+def get_grade(s1, s2, s3):
+	mean_score = (s1 + s2 + s3) / 3
+	if 100 >= mean_score >= 90:
+		return "A"
+	elif 90 > mean_score >= 80:
+		return "B"
+	elif 80 > mean_score >= 70:
+		return "C"
+	elif 70 > mean_score >= 60:
+		return "D"
+	else:
+		return "F"
+
+
+assert get_grade(70, 70, 100) == "B"
+assert get_grade(58, 62, 70) == "D"
+assert get_grade(44, 55, 52) == "F"
+
+
+def rps(p1, p2):
+	rps_choices = {
+		"rock": 1,
+		"paper": 2,
+		"scissors": 3
+	}
+
+	return "Draw!" if rps_choices[p1] == rps_choices[p2] else (
+		"Player 1 won!" if (rps_choices[p1] - rps_choices[p2]) % 3 == 1 else "Player 2 won!")
+
+
+assert rps("rock", "scissors") == "Player 1 won!"
+assert rps("scissors", "rock") == "Player 2 won!"
+assert rps("rock", "rock") == "Draw!"
+
+
+# https://www.codewars.com/kata/5772da22b89313a4d50012f7
+
+
+def greet(name, owner):
+	return f"Hello {'boss' if name == owner else 'guest'}"
+
+
+assert greet('Daniel', 'Daniel') == 'Hello boss'
+assert greet('Greg', 'Daniel') == 'Hello guest'
+
+
+# https://www.codewars.com/kata/568d0dd208ee69389d000016/train/python
+
+def rental_car_cost(d):
+	return d * 40 - (50 if 7 <= d else 20 if 3 <= d else 0)
+
+
+assert rental_car_cost(1) == 40
+assert rental_car_cost(4) == 140
+assert rental_car_cost(7) == 230
+
+
+def area_or_perimeter(l, w):
+	return l * w if l == w else 2 * (l + w)
+
+
+assert area_or_perimeter(4, 4) == 16
+assert area_or_perimeter(6, 10) == 32
+assert area_or_perimeter(5, 3) == 16
+
+
+# https://www.codewars.com/kata/57a0885cbb9944e24c00008e/train/python
+
+def remove_exclamation_marks(s):
+	return s.replace('!', '')
+
+
+assert remove_exclamation_marks("Hello World!") == "Hello World"
+assert remove_exclamation_marks("Hello World!!!") == "Hello World"
+assert remove_exclamation_marks("Hi! Hello!") == "Hi Hello"
+
+
+# https://www.codewars.com/kata/563e320cee5dddcf77000158/train/python
+
+def get_average(marks):
+	return sum(marks) // len(marks)
+
+
+assert get_average([2, 2, 2, 2]) == 2
+assert get_average([1, 5, 87, 45, 8, 8]) == 25
+assert get_average([2, 5, 13, 20, 16, 16, 10]) == 11
+
+
+# https://www.codewars.com/kata/5a023c426975981341000014/train/python
+
+def other_angle(a, b):
+	return 180 - (a + b)
+
+
+assert other_angle(30, 60) == 90
+assert other_angle(60, 60) == 60
+assert other_angle(43, 78) == 59
+
+
+# https://www.codewars.com/kata/568dcc3c7f12767a62000038/train/python
+
+def set_alarm(employed, vacation):
+	return True if employed == True and vacation == False else False
+
+
+assert set_alarm(True, True) == False
+assert set_alarm(False, True) == False
+assert set_alarm(False, False) == False
+
+
+# https://www.codewars.com/kata/55f73be6e12baaa5900000d4/train/python
+
+def goals(laLiga, copaDelRey, championsLeague):
+	return sum((laLiga, copaDelRey, championsLeague))
+
+
+assert goals(0, 0, 0) == 0
+assert goals(5, 10, 2) == 17
+assert goals(4, 0, 10) == 14
+
+
+# https://www.codewars.com/kata/56b1f01c247c01db92000076/train/python
+
+def double_char(s):
+	return "".join(char * 2 for char in s)
+
+
+assert double_char("String") == "SSttrriinngg"
+assert double_char("Hello World") == "HHeelllloo  WWoorrlldd"
+assert double_char("1234!_ ") == "11223344!!__  "
+
+
+# https://www.codewars.com/kata/557cd6882bfa3c8a9f0000c1/train/python
+
+def get_age(age):
+	return int(age[0])
+
+
+assert get_age("2 years old") == 2
+assert get_age("4 years old") == 4
+assert get_age("5 years old") == 5
+
+
+# https://www.codewars.com/kata/5769b3802ae6f8e4890009d2/train/python
+
+def remove_every_other(my_list):
+	return my_list[::2]
+
+
+assert remove_every_other([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) == [1, 3, 5, 7, 9]
+assert remove_every_other([[1, 2]]) == [[1, 2]]
+assert remove_every_other([['Goodbye'], {'Great': 'Job'}]) == [['Goodbye']]
+
+
+# https://www.codewars.com/kata/55ecd718f46fba02e5000029
+
+def between(a, b):
+	return list(range(a, b + 1))
+
+
+assert between(1, 4) == [1, 2, 3, 4]
+assert between(-2, 2) == [-2, -1, 0, 1, 2]
+assert between(3, 6) == [3, 4, 5, 6]
+
+
+# https://www.codewars.com/kata/5899642f6e1b25935d000161/train/python
+
+def merge_arrays(arr1, arr2):
+	return sorted(set(arr1 + arr2))
+
+
+assert merge_arrays([1, 2, 3, 4], [5, 6, 7, 8]) == [1, 2, 3, 4, 5, 6, 7, 8]
+assert merge_arrays([1, 3, 5, 7, 9], [10, 8, 6, 4, 2]) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+assert merge_arrays([1, 2, 3, 4, 5], [6, 7, 8, 9]) == [1, 2, 3, 4, 5, 6, 7, 8, 9]
