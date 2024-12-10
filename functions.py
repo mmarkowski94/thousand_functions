@@ -2118,3 +2118,83 @@ def even_numbers(arr, n):
 assert even_numbers([1, 2, 3, 4, 5, 6, 7, 8, 9], 3) == [4, 6, 8]
 assert even_numbers([-22, 5, 3, 11, 26, -6, -7, -8, -9, -8, 26], 2) == [-8, 26]
 assert even_numbers([6, -25, 3, 7, 5, 5, 7, -3, 23], 1) == [6]
+
+
+# https://www.codewars.com/kata/57e3f79c9cb119374600046b/train/python
+
+
+def hello(name=None):
+	return f"Hello, {'World' if not name else name.capitalize()}!"
+
+
+assert hello() == "Hello, World!"
+assert hello("john") == "Hello, John!"
+assert hello("John") == "Hello, John!"
+
+
+# https://www.codewars.com/kata/5556282156230d0e5e000089/train/python
+
+
+def dna_to_rna(dna):
+	return dna.replace("T", "U")
+
+
+assert dna_to_rna("TTTT") == "UUUU"
+assert dna_to_rna("GCAT") == "GCAU"
+assert dna_to_rna("GACCGCCGCC") == "GACCGCCGCC"
+
+
+# https://www.codewars.com/kata/576b93db1129fcf2200001e6/train/python
+
+def sum_array(arr):
+	return 0 if arr is None or len(arr) < 2 else sum(arr) - (min(arr) + max(arr))
+
+
+assert sum_array([6, 2, 1, 8, 10]) == 16
+assert sum_array([6, 0, 1, 10, 10]) == 17
+assert sum_array([-6, -20, -1, -10, -12]) == -28
+
+
+# https://www.codewars.com/kata/5bb904724c47249b10000131/train/python
+
+def points(games):
+	return sum(
+		(3 if int(scores[0]) > int(scores[-1]) else 1 if int(scores[0]) == int(scores[-1]) else 0 for scores in games))
+
+
+assert points(['1:0', '2:0', '3:0', '4:0', '2:1', '3:1', '4:1', '3:2', '4:2', '4:3']) == 30
+assert points(['1:1', '2:2', '3:3', '4:4', '2:2', '3:3', '4:4', '3:3', '4:4', '4:4']) == 10
+assert points(['0:1', '0:2', '0:3', '0:4', '1:2', '1:3', '1:4', '2:3', '2:4', '3:4']) == 0
+
+
+# https://www.codewars.com/kata/55225023e1be1ec8bc000390/train/python
+
+
+def greet(name):
+	return f"Hello, {name if name != 'Johnny' else 'my love'}!"
+
+
+assert greet("Johnny") == "Hello, my love!"
+assert greet("Jane") == "Hello, Jane!"
+assert greet("Jim") == "Hello, Jim!"
+
+
+# https://www.codewars.com/kata/56f69d9f9400f508fb000ba7/train/python
+
+
+def monkey_count(n):
+	return list(range(1, n + 1))
+
+
+assert monkey_count(5) == [1, 2, 3, 4, 5]
+assert monkey_count(3) == [1, 2, 3]
+assert monkey_count(9) == [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+def quarter_of(month):
+	return 1 if month in [1, 2, 3] else 2 if month in [4, 5, 6] else 3 if month in [7, 8, 9] else 4
+
+
+assert quarter_of(3) == 1
+assert quarter_of(8) == 3
+assert quarter_of(11) == 4
