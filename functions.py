@@ -2411,3 +2411,37 @@ def merge_arrays(arr1, arr2):
 assert merge_arrays([1, 2, 3, 4], [5, 6, 7, 8]) == [1, 2, 3, 4, 5, 6, 7, 8]
 assert merge_arrays([1, 3, 5, 7, 9], [10, 8, 6, 4, 2]) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 assert merge_arrays([1, 2, 3, 4, 5], [6, 7, 8, 9]) == [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+# https://www.codewars.com/kata/5cd5ba1ce4471a00256930c0/train/python
+
+
+def solution(n, d):
+	return [] if d <= 0 else [int(char) for char in str(n).replace(".", "")][-d:]
+
+
+assert solution(123767, 4) == [3, 7, 6, 7]
+assert solution(12, 1) == [2]
+assert solution(2134, 3) == [1, 3, 4]
+
+
+# https://www.codewars.com/kata/5a1a9e5032b8b98477000004/train/python
+
+def even_last(numbers):
+	return sum(numbers[::2]) * numbers[-1] if numbers else 0
+
+
+assert even_last([1, 2, 3, 7]) == 28
+assert even_last([2, 3, 4, 5]) == 30
+assert even_last([]) == 0
+
+
+# https://www.codewars.com/kata/572b77262bedd351e9000076/train/python
+
+def first(seq, n=1):
+	return seq[:n]
+
+
+assert first(['a', 'b', 'c', 'd', 'e'], 0) == []
+assert first(['a', 'b', 'c', 'd', 'e'], 1) == ['a']
+assert first(['a', 'b', 'c', 'd', 'e'], 2) == ['a', 'b']
